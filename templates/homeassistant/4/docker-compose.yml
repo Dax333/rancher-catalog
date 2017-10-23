@@ -22,6 +22,7 @@ services:
       - /var/lib/docker/volumes/ha_config:/config
     ports:
       - ${HA_PORT}:8123
+    network_mode: host
 #    devices:
 #      {{- if (.Values.DEV_ZWAVE) }}
 #      - /dev/serial/by-id/${DEV_ZWAVE}:/zwaveusb:rwm
