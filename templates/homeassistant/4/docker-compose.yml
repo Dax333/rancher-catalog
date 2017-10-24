@@ -3,7 +3,8 @@ services:
   db:
     image: mysql:5.7.20
     volumes:
-      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
+#      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     {{- if (.Values.MYSQL_PORT) }}
     ports:
       - ${MYSQL_PORT}:3306
@@ -19,10 +20,16 @@ services:
       - db
     image: homeassistant/home-assistant:0.56.1
     volumes:
-      - /var/lib/docker/volumes/ha_config:/config
+#      - /var/lib/docker/volumes/ha_config:/config
+      - mysql:/config
     ports:
       - ${HA_PORT}:8123
     network_mode: host
+volumes:
+  mysql:
+    driver: rancher-nfs
+    driver_opts:
+      onRemove: purge
 #    devices:
 #      {{- if (.Values.DEV_ZWAVE) }}
 #      - /dev/serial/by-id/${DEV_ZWAVE}:/zwaveusb:rwm
