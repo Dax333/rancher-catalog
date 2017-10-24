@@ -4,7 +4,7 @@ services:
     image: mysql:5.7.20
     volumes:
 #      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
-      - mysql:/var/lib/mysql
+      - mysql/mysql:/var/lib/mysql
     {{- if (.Values.MYSQL_PORT) }}
     ports:
       - ${MYSQL_PORT}:3306
@@ -21,7 +21,7 @@ services:
     image: homeassistant/home-assistant:0.56.1
     volumes:
 #      - /var/lib/docker/volumes/ha_config:/config
-      - mysql:/config
+      - mysql/hass:/config
     ports:
       - ${HA_PORT}:8123
     network_mode: host
