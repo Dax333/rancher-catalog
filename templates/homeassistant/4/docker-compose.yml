@@ -4,7 +4,6 @@ services:
     image: mysql:5.7.20
     volumes:
       - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
-#      - mysql:/var/lib/mysql
         driver_opts:
           onRemove: retain
     {{- if (.Values.MYSQL_PORT) }}
