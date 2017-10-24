@@ -3,10 +3,11 @@ services:
   db:
     image: mysql:5.7.20
     volumes:
-      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
-        driver_opts:
-          onRemove: retain
-    {{- if (.Values.MYSQL_PORT) }}
+#      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
+    - mysql:/var/lib/mysql
+#        driver_opts:
+#          onRemove: retain
+#    {{- if (.Values.MYSQL_PORT) }}
     ports:
       - ${MYSQL_PORT}:3306
     {{- end }}
@@ -21,8 +22,8 @@ services:
       - db
     image: homeassistant/home-assistant:0.56.2
     volumes:
-      - /var/lib/docker/volumes/ha_config:/config
-#      - mysql:/config
+#      - /var/lib/docker/volumes/ha_config:/config
+      - hass:/config
     ports:
       - ${HA_PORT}:8123
     network_mode: host
