@@ -25,16 +25,16 @@ services:
     ports:
       - ${HA_PORT}:8123
     network_mode: host
-volumes:
-  mysql:
-    driver: rancher-nfs
-    driver_opts:
-      onRemove: purge
-      exportBase: /mysql
-  hass:
-    driver: rancher-nfs
-    driver_opts:
-      onRemove: purge
+#volumes:
+#  mysql:
+#    driver: rancher-nfs
+#    driver_opts:
+#      onRemove: purge
+#      exportBase: /mysql
+#  hass:
+#    driver: rancher-nfs
+#    driver_opts:
+#      onRemove: purge
 #      exportBase: /exports/containerdata/hass
       
 #    devices:
