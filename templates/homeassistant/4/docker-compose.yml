@@ -5,8 +5,6 @@ services:
     volumes:
 #      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
     - mysql:/var/lib/mysql
-#        driver_opts:
-#          onRemove: retain
 #    {{- if (.Values.MYSQL_PORT) }}
     ports:
       - ${MYSQL_PORT}:3306
