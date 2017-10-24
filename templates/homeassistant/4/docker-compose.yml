@@ -21,7 +21,7 @@ services:
     image: homeassistant/home-assistant:0.56.2
     volumes:
 #      - /var/lib/docker/volumes/ha_config:/config
-      - hass:/config
+      - mysql:/config
     ports:
       - ${HA_PORT}:8123
     network_mode: host
