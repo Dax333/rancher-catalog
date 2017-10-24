@@ -5,7 +5,7 @@ services:
     volumes:
 #      - /var/lib/docker/volumes/ha_mysql:/var/lib/mysql
     - mysql:/var/lib/mysql
-#    {{- if (.Values.MYSQL_PORT) }}
+    {{- if (.Values.MYSQL_PORT) }}
     ports:
       - ${MYSQL_PORT}:3306
     {{- end }}
